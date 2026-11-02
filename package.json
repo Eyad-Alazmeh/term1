@@ -9,6 +9,8 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "start": "NODE_ENV=production node dist/boot.js",
+    "vercel-build": "vite build",
+    "build:vercel": "esbuild scripts/vercel-entry.ts --platform=node --bundle --format=esm --outfile=api/index.js --banner:js=\"import { createRequire } from 'module';const require = createRequire(import.meta.url);\"",
     "check": "tsc -b",
     "format": "prettier --write .",
     "test": "vitest run",

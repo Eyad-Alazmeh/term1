@@ -92,7 +92,8 @@ app.onError((err, c) => {
 
 export default app;
 
-if (env.isProduction) {
+// على Vercel لا نشغّل سيرفراً دائماً: scripts/vercel-entry.ts يصدّر التطبيق كدالة
+if (env.isProduction && !process.env.VERCEL) {
   const { serve } = await import("@hono/node-server");
   const { serveStaticFiles } = await import("./lib/vite");
   serveStaticFiles(app);
